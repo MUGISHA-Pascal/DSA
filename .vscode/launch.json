@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/pc/Documents/github-workshop/DSA",
-      "program": "c:/Users/pc/Documents/github-workshop/DSA/build/Debug/outDebug",
+      "cwd": "c:/Users/pc/Documents/github-workshop/DSA/sorting_algorithms",
+      "program": "c:/Users/pc/Documents/github-workshop/DSA/sorting_algorithms/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
