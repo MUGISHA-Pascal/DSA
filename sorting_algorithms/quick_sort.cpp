@@ -30,7 +30,7 @@ using namespace std;
  }
 
  int main(){
-    std::vector<int> arr = {13,23,5,68,98,5,33};
+    std::vector<int> arr = {13,23,5,68,98,5,3};
     int num = arr.size();
     std::cout<<"Original array : ";
     printArray(arr);
