@@ -30,6 +30,9 @@ virtual void viewDetails(){
        cout<<"Position : "<<position<<endl;
         cout<<"Salary : "<<salary<<endl;
 }
+virtual int getId(){
+    return id;
+}
 virtual double calculateSalary(){
     return salary;
 }
