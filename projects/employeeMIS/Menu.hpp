@@ -24,7 +24,7 @@ class Menu{
                 int age;
                 double salary;
                 cout << "Enter Employee ID : ";
-                cin << id ;
+                cin >> id ;
                 cout << "Enter Name : ";
                 cin>>name;
                 cout << "Enter Age : ";
@@ -33,7 +33,7 @@ class Menu{
                 cin>>position;
                 cout << "Enter Salary : ";
                 cin>>salary;
-                Employee* newEmp = new Employee(id,name,age,"N/A",position,salary);#
+                Employee* newEmp = new Employee(id,name,age,"N/A",position,salary);
                 employees.push_back(newEmp);
                 dept.addEmployee(newEmp);
                 break;

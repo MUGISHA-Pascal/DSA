@@ -15,7 +15,7 @@ void addEmployee(Employee* employee){
     employees.push_back(employee);
 }
 void viewEmployees(){
-    cout << "Employees in "<<department<< "Department : "<<endl;
+    cout << "Employees in "<<departmentName<< "Department : "<<endl;
     for(auto& emp:employees){
         emp->viewDetails();
         cout<<endl;

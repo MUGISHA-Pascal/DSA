@@ -20,7 +20,7 @@ class Employee {
     int age,
     string address,
     string position,
-    double salary):id(id),name(name),age(age),address(address),position(position),salary(Salary){}
+    double salary):id(id),name(name),age(age),address(address),position(position),salary(salary){}
 
 virtual void viewDetails(){
     cout<<"Employee ID : "<<id<<endl;
@@ -37,7 +37,7 @@ virtual double calculateSalary(){
     return salary;
 }
 virtual ~Employee(){}
-}
+};
 class Manager : public Employee{
 public:
 Manager(int id,string name,int age,string address,string position,double salary):Employee(id,name, age,address,position,salary){}
@@ -51,7 +51,7 @@ double calculateSalary() override {
 };
 class HR: public Employee {
     public:
-    HR(int id,string name,int age , string address, string position,double salary):employee(id,name,age,address,position,salary){}
+    HR(int id,string name,int age , string address, string position,double salary):Employee(id,name,age,address,position,salary){}
     void viewDetails() override {
         Employee::viewDetails();
         cout<<"This employee is in HR"<<endl;
