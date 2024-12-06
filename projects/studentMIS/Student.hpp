@@ -13,7 +13,7 @@ class Student {
        vector<Course> enrolledCourses;
     public:
     Student(string name,int studentID,int age);
-    void enrolledCourse(const Course& course);
+    void enrollCourse(const Course& course);
     void displayInfo() const;
     vector<Course> getCourses() const;
     int getId() const;
