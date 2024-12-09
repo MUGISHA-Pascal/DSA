@@ -2,6 +2,12 @@
 #include <vector>
 using namespace std;
 #int main(){
+    void printArray(const vector<int>& arr){
+        for (int num : arr){
+            cout << num  << " ";
+        }
+    cout << endl;
+    };
     while(true){
         int choice;
     cout<<"Enter your choice : "<<endl;
@@ -26,6 +32,13 @@ using namespace std;
                 }
                 swap(arr[i+1],arr[high]);
                 return i+1;
+        }
+        void quickSort(vector<int>& arr , int low , int high){
+            if(low<high){
+                int pi = partition(arr,low,high);
+                quickSort(arr,low,pi-1);
+                quickSort(arr,pi+1,high);
+            }
         }        
         break;
         case 2:
