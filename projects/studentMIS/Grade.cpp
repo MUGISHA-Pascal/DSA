@@ -13,12 +13,14 @@ char Grade::getGrade(int studentID,int courseID) const {
         return courseIt->second;
      }
     }
-    return "N";
+    return 'N';
 }
 void Grade::displayGrades(int studentID) const {
     auto studentIt = gradeBook.find(studentID);
     if(studentIt != gradeBook.end()){
-        for(const auto& [courseID,grade] : studentIt->second){
+        for(const auto& pair : studentIt->second){
+            auto courseID = pair.first;
+            auto grade = pair.second;
             cout << "Course ID : "<< courseID << " Grade  : "<< grade << endl;
         }
     }else{

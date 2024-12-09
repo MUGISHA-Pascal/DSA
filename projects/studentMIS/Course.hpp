@@ -9,9 +9,9 @@ class Course {
     int courseID;
     int credicts;
  public:
- Course(std::string,courseName,int courseID, int credits);
+ Course(string courseName,int courseID, int credits);
  string getName() const;
  int getID() const;
- int getCredits() const; 
-}
+ int getCredits() ; 
+};
 #endif

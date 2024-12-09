@@ -6,7 +6,7 @@ Student::Student(string name,int studentID,int age): name(name),studentID(studen
 void Student::enrollCourse(const Course& course){
     enrolledCourses.push_back(course);
 }
-void Student:displayInfo() const {
+void Student::displayInfo() const {
     cout << "Name : "<< name  << "\n ID : "<<studentID<<"\n Age : "<<age<<"\n Enrolled Courses : ";
     for(const auto& course : enrolledCourses){
         cout << course.getName() << " ";
@@ -17,6 +17,6 @@ void Student:displayInfo() const {
 vector<Course> Student::getCourses() const {
     return enrolledCourses;
 }
-int Student::getID() const{
+int Student::getId() const{
     return studentID;
 }
