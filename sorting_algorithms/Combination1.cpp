@@ -135,7 +135,23 @@ int main() {
                 break;
             }
             case 3:
-                cout
+                cout<<"Enter the size of the array : ";
+                int n;
+              cin >> n; 
+              cout<<endl;
+              vector<int> array ;
+            array.resize(n);
+            cout<<"Enter the "<<n<<" elements for the array (format : xxx) : ";
+            for(int i=0;i<n;i++){
+                cin >> array[i];
+            }
+            cout << endl;
+        cout << "The original array is  : ";
+        printArray(array);
+        int mid = 0 + (n-0)/2;
+        merge(array,0,mid,n);
+        cout << "The sorted array using merge sort is : ";
+        printArray(array);
                 break;
             case 4:
                 // Selection sort implementation goes here
