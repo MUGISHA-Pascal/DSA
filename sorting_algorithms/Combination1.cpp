@@ -1,13 +1,35 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 using namespace std;
-#int main(){
-    void printArray(const vector<int>& arr){
+ void printArray(const vector<int>& arr){
         for (int num : arr){
             cout << num  << " ";
         }
     cout << endl;
     };
+    //quick sort
+            int partition(vector<int>& arr , int low, int high){
+                int pivot = arr[high];
+                int i = low-1;
+                for(int j=low;j<high;j++){
+                    if(arr[j]<=pivot){
+                        i++;
+                        swap(arr[i],arr[j]);
+                    }
+                }
+                swap(arr[i+1],arr[high]);
+                return i+1;
+        };
+        void quickSort(vector<int>& arr , int low , int high){
+            if(low<high){
+                int pi = partition(arr,low,high);
+                quickSort(arr,low,pi-1);
+                quickSort(arr,pi+1,high);
+            }
+        };
+int main(){
+   
     while(true){
         int choice;
     cout<<"Enter your choice : "<<endl;
@@ -21,25 +43,22 @@ using namespace std;
     switch (choice)
     {
         case 1:
-        int partition(vector<int>& arr , int low, int high){
-                int pivot = arr[high];
-                int i = low-1;
-                for(int j=low;j<high;j++){
-                    if(arr[j]<=pivot){
-                        i++;
-                        swap(arr[i],arr[j]);
-                    }
-                }
-                swap(arr[i+1],arr[high]);
-                return i+1;
-        }
-        void quickSort(vector<int>& arr , int low , int high){
-            if(low<high){
-                int pi = partition(arr,low,high);
-                quickSort(arr,low,pi-1);
-                quickSort(arr,pi+1,high);
-            }
-        }        
+
+     int n;
+     vector<int> array;
+     cout << "Enter the size of the array : ";
+     cin >> n ;
+     array.resize(n);
+     cout<<"Enter the "<< n <<" elements of the array (format:xxx) : ";
+     for(int i=0;i<n;i++){
+        cin>>array[i];
+     } 
+     cout<<endl;
+     cout<<"The original array : " << printArray(array);
+     quickSort(array,0,n);
+     cout<<"The sorted array using quick sort : " << printArray(array);
+     cout<<endl;
+
         break;
         case 2:
         break;
@@ -51,12 +70,12 @@ using namespace std;
         break;
         case 6:
         cout<<"Exiting....."<<endl;
-        exit(0);
+        return 0;
         break;
     default:
     cout << "invalid input"<<endl;
         break;
-    }
-    }
+    };
+    };
     return 0;
 }
