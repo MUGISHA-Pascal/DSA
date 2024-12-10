@@ -47,6 +47,41 @@ for(int i=0;i<n-1;++i){
 }
 }
 
+//merge sort 
+void merge(vector<int>& arr, int left, int mid , int right){
+    int n1 = mid - left+1;
+    int n2 = right - mid;
+    vector<int> leftArray(n1);
+    vector<int> rightArray(n2);
+    for(int i=0;i<n1;i++){
+        leftArray[i]=arr[left+i];
+            }
+            for(int j=0;j<n2;j++){
+                rightArray[j]=arr[mid + 1 + j];
+            }
+            int i=0,j=0,k=left;
+            while(i<n1 && i<n2){
+                if(leftArray[i]<=rightArray[j]){
+                    arr[k]=leftArray[i];
+                    i++;
+                }else{
+                    arr[k] = rightArray[j];
+                    j++;
+                }
+                k++;
+            }
+            while(i<n1){
+                arr[k]=leftArray[i];
+                i++;
+                k++;
+            }
+            while(j<n2){
+                arr[k]=rightArray[j];
+                j++;
+                k++;
+            }
+}
+
 int main() {
     while (true) {
         int choice;
@@ -90,15 +125,17 @@ int main() {
                     cin >> array[i];
                 }
                 cout << endl;
-                cout << "The entered array is : " << printArray(array);
+                cout << "The entered array is : " ;
+                 printArray(array);
                 cout<<endl;
                 bubbleSort(array,n);
-                cout << "The sorted array is : " << printArray(array);
+                cout << "The sorted array is : " ;
+                 printArray(array);
                 cout<<endl;
                 break;
             }
             case 3:
-                // Merge sort implementation goes here
+                cout
                 break;
             case 4:
                 // Selection sort implementation goes here
