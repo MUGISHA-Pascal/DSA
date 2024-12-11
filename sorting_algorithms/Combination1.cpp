@@ -10,6 +10,13 @@ void printArray(const vector<int>& arr) {
     cout << endl;
 }
 
+void PrintArray( int arr[]) {
+    int n = sizeof(arr)/sizeof(arr[0]);
+    for (int i=0;i<n;i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+}
 int partition(vector<int>& arr, int low, int high) {
     int pivot = arr[high];
     int i = low - 1;
@@ -95,7 +102,8 @@ void SelectionSort(vector<int>& arr,int n){
     }
 }
 //insertion sort
-void insertionSort(int arr[],int n){
+void insertionSort(int arr[]){
+    int n = sizeof(arr)/sizeof(arr[0]);
     for(int i=1;i<n;i++){
         int key= arr[i];
         int j=i-1;
@@ -206,17 +214,17 @@ int main() {
                 int n;
               cin >> n; 
               cout<<endl;
-              int array ;            
+              int array[n];            
             cout<<"Enter the "<<n<<" elements for the array (format : xxx) : ";
             for(int i=0;i<n;i++){
                 cin >> array[i];
             }
             cout << endl;
         cout << "The original array is  : ";
-        printArray(array);
-        insertionSort(array,n);
+        PrintArray(array);
+        insertionSort(array);
         cout << "The sorted array using insertion sort is : ";
-        printArray(array);
+        PrintArray(array);
                 break;
             }                break;
             case 6:
