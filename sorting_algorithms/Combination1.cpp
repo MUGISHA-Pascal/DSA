@@ -94,7 +94,18 @@ void SelectionSort(vector<int>& arr,int n){
         swap(arr[i],arr[minIndex]);
     }
 }
-
+//insertion sort
+void insertionSort(int arr[],int n){
+    for(int i=1;i<n;i++){
+        int key= arr[i];
+        int j=i-1;
+        while(j>=0 && arr[j]>key){
+            arr[j+1]=arr[j];
+            j=j-1;
+        }
+        arr[j+1]=key;
+    }
+}
 int main() {
     while (true) {
         int choice;
@@ -183,7 +194,6 @@ int main() {
             cout << endl;
         cout << "The original array is  : ";
         printArray(array);
-        int mid = 0 + (n-0)/2;
         SelectionSort(array,n);
         cout << "The sorted array using selection sort is : ";
         printArray(array);
@@ -191,8 +201,24 @@ int main() {
             }
                 break;
             case 5:
-                // Insertion sort implementation goes here
+                       {
+                cout<<"Enter the size of the array : ";
+                int n;
+              cin >> n; 
+              cout<<endl;
+              int array ;            
+            cout<<"Enter the "<<n<<" elements for the array (format : xxx) : ";
+            for(int i=0;i<n;i++){
+                cin >> array[i];
+            }
+            cout << endl;
+        cout << "The original array is  : ";
+        printArray(array);
+        insertionSort(array,n);
+        cout << "The sorted array using insertion sort is : ";
+        printArray(array);
                 break;
+            }                break;
             case 6:
                 cout << "Exiting....." << endl;
                 return 0;
