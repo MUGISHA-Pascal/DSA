@@ -18,7 +18,7 @@ int binarySearch(const vector<int>& arr,int target){
     return -1;
 }
 int main(){
-    //sorted array
+    //it must be a sorted array
     vector<int> arr = {2,3,4,5,6,7,8};
     int target ;
     cout << "Enter the number to test : ";
