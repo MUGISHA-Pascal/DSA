@@ -10,7 +10,7 @@ struct Node {
 void insert(Node*& tail, int value) {
     Node* newNode = new Node();
     newNode->data = value;
-    if (!tail) { // If the list is empty
+    if (!tail) { 
         newNode->next = newNode;
         tail = newNode;
     } else {
@@ -27,7 +27,7 @@ void deleteAtBeginning(Node*& tail) {
         return;
     }
     Node* head = tail->next;
-    if (head == tail) { // Single node case
+    if (head == tail) {
         delete head;
         tail = nullptr;
     } else {
