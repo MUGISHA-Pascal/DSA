@@ -50,7 +50,7 @@ void insertEnd(Node*& head,int data){
   }
   Node* temp=head;
   do{
-    cout<<temp->data<<"->";
+    cout<<temp->5data<<"->";
     temp = temp->next;
   }while(temp!=head);
   cout << "(HEAD)\n";
