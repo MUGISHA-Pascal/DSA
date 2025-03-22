@@ -54,7 +54,7 @@ struct Recipe{
                         cout<<"Recipe found: \n";
                         cout<<"Recipe Name: "<<temp->name<<endl;
                         cout<<"Ingredients:\n";
-                        for(const auto* ingredient : temp->ingredients){
+                        for(const auto& ingredient : temp->ingredients){
                           cout<<" - "<<ingredient<<endl;
                         }
                         cout<<"Instructions: "<<temp->instructions<<endl;
@@ -90,7 +90,7 @@ struct Recipe{
                   }
 
                 }
-                ~RecipeManeger(){
+                ~RecipeManager(){
                   while(head){
                     Recipe* temp=head;
                     head=head->next;
@@ -126,7 +126,7 @@ int main(){
           }
           cout<<"Enter Instructions: ";
           getline(cin,instructions);
-          managet.addRecipe(name,ingredients,instructions);
+          manager.addRecipe(name,ingredients,instructions);
           break;
       case 2:
           manager.displayAllRecipes();
