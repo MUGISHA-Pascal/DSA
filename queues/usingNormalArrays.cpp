@@ -18,11 +18,12 @@ void enqueue()
     if (front == -1)
     {
       front = 0;
+    }
       cout << "Insert the element in queue: " << endl;
       cin >> val;
       rear++;
       queue[rear] = val;
-    }
+    
   }
 }
 
