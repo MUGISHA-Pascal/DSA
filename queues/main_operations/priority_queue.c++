@@ -26,13 +26,13 @@ public:
 
     void enqueue(int data, int priority) {
         Node* newNode = new Node(data, priority);
-        
-        if (front == nullptr || priority < front->priority) {
+
+        if (front == nullptr || priority < front->priority) { 
             newNode->next = front;
             front = newNode;
         } else {
             Node* temp = front;
-            while (temp->next != nullptr && temp->next->priority <= priority) {
+            while (temp->next != nullptr && temp->next->priority < priority) {  
                 temp = temp->next;
             }
             newNode->next = temp->next;
@@ -63,6 +63,10 @@ public:
     }
 
     void display() {
+        if (front == nullptr) {
+            cout << "Queue is empty!\n";
+            return;
+        }
         Node* temp = front;
         while (temp != nullptr) {
             cout << "(" << temp->data << ", " << temp->priority << ") -> ";
@@ -70,10 +74,17 @@ public:
         }
         cout << "NULL\n";
     }
+
+    ~PriorityQueue() {
+        while (!isEmpty()) {
+            dequeue();
+        }
+    }
 };
 
 int main() {
     PriorityQueue pq;
+    
     pq.enqueue(10, 2);
     pq.enqueue(20, 1);
     pq.enqueue(30, 3);
