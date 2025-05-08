@@ -37,7 +37,6 @@ int main() {
     }
 
     cout << "\nSpanning Tree Edges:\n";
-    dfs(1, -1);  // Starting DFS from node 1
-
+    dfs(1, -1);  
     return 0;
 }
