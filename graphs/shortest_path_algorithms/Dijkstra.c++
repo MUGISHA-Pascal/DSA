@@ -24,7 +24,7 @@ public:
             return;
         }
         adj[u].push_back(make_pair(v, w));
-        adj[v].push_back(make_pair(u, w)); 
+        adj[v].push_back(make_pair(u, w));
     }
 
     vector<int> dijkstra(int src) {
@@ -57,50 +57,35 @@ public:
 };
 
 int main() {
-    int V, E;
-
-    cout << "Enter number of vertices: ";
-    cin >> V;
-    cout << "Enter number of edges: ";
-    cin >> E;
-
-    if (V <= 0 || E <= 0) {
-        cout << "Number of vertices and edges must be positive integers!" << endl;
-        return 1;
-    }
+    int V = 9;  // Number of vertices
+    int E = 14;  // Number of edges
 
     Graph g(V);
 
-    cout << "Enter the edges in the format (u v weight):\n";
-    for (int i = 0; i < E; i++) {
-        int u, v, w;
-        cin >> u >> v >> w;
+    // Manually add edges (use 0-based indexing)
+    g.addEdge(1, 0,4);
+    g.addEdge(0,7,8);
+    g.addEdge(1,7,11);
+    g.addEdge(1,2,8);
+    g.addEdge(7,8,7);
+    g.addEdge(7,6,1);
+    g.addEdge(2,8,2);
+    g.addEdge(8,6,6);
+    g.addEdge(6,5,2);
+    g.addEdge(5,2,4);
+    g.addEdge(5,3,14);
+    g.addEdge(3,2,7);
+    g.addEdge(5,4,10);
+    g.addEdge(3,4,6);
+    g.addEdge(3,4,9);
 
-        u -= 1;
-        v -= 1;
 
-        if (u < 0 || u >= V || v < 0 || v >= V) {
-            cout << "Invalid edge input: vertex out of bounds." << endl;
-            i--;  
-            continue;
-        }
-
-        g.addEdge(u, v, w);
-    }
-
-    int source;
-    cout << "Enter the source vertex (0-indexed): ";
-    cin >> source;
-
-    if (source < 0 || source >= V) {
-        cout << "Invalid source vertex!" << endl;
-        return 1;
-    }
+    int source = 1; // Source vertex (0-indexed)
 
     vector<int> distances = g.dijkstra(source);
 
     if (distances.empty()) {
-        return 1;  
+        return 1;
     }
 
     cout << "Shortest distances from source vertex " << source << ":" << endl;
