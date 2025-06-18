@@ -3,6 +3,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "selection_sort_java",
+      "request": "launch",
+      "mainClass": "sorting.selection_sort_java",
+      "projectName": "DSA_3bd59da7"
+    },
+    {
+      "type": "java",
       "name": "insertion_sort_java",
       "request": "launch",
       "mainClass": "sorting.insertion_sort_java",
