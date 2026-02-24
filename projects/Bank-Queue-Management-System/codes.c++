@@ -50,4 +50,63 @@ class BankQueue{
                 front++;
             }
            }
+
+           void display(){
+            if(isEmpty()){
+                cout <<"Queue is empty.\n";
+                return;
+            }
+            cout << "Customers in queue:\n";
+            for(int i=front;i<=rear;i++){
+                cout << i-front+1 <<". "<<arr[i]<<endl;
+           }
+           
+           void peek(){
+            if(isEmpty()){
+                cout<<"Queue is empty.\n";
+            }else{
+                cout<<"Next customer: "<<arr[front]<<endl;
+            }
+           }
+        }
+};
+
+int main(){
+    BankQueue queue;
+    int choice;
+    string name;
+
+    do{
+        cout << "\n=== Bank Queue System ===\n";
+        cout<<"1. Add Customer\n";
+        cout <<"2. Serve Customer\n";
+        cout<<"3. View Next Customer\n";
+        cout<<"4. Display Queue\n";
+        cout<<"5. Exit\n";
+        cout<<"Enter choice: ";
+        cin>>choice;
+        switch(choice){
+            case 1:
+                  cout<<"Enter customer name: ";
+                  cin>>name;
+                  queue.enqueue(name);
+                  break;
+            case 2:
+                   queue.dequeue();
+                   break;
+            case 3:
+                   queue.peek();
+                   break;
+            case 4:
+                   queue.display();
+                   break;
+            case 5:
+                   cout<<"Exiting...\n";
+                   break;
+            default:
+                    cout<<"Invalid choice.\n";
+                
+        }
+    }while(choice!=5);
+    return 0;
 }
