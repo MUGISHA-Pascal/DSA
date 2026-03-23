@@ -34,7 +34,7 @@ void merge(Post arr[],int left , int mid ,int right){
     for(int i=0;i<n1;i++) L[i] = arr[left + i];
     for(int j=0;j<n2;j++) R[j] = arr[mid+1+j];
 
-    int i=0;j=0;k=left;
+    int i=0,j=0,k=left;
 
     while(i<n1 && j<n2){
         if(compare(L[i],R[j])) arr[k++]=L[i++];
@@ -66,13 +66,38 @@ void displayFeed(Post arr[],int n){
     }
 }
 
+int partition(Post arr[],int low,int high){
+    Post pivot = arr[high];
+
+    int i=low-1;
+
+    for(int j=low;j<high;j++){
+        if(compare(arr[j],pivot)){
+            i++;
+            swap(arr[i],arr[j]);
+        }
+    }
+
+    swap(arr[i+1],arr[high]);
+    return i+1;
+}
+
+void quickSort(Post arr[],int low,int high){
+    if(low<high){
+        int pi = partition(arr,low,high);
+
+        quickSort(arr,low,pi-1);
+        quickSort(arr,pi+1,high);
+    }
+}
+
 int main(){
     int n;
     cout<<"Enter number of posts: ";
     cin>>n;
     cin.ignore();
     
-    Posts posts[n];
+    Post posts[n];
 
     for(int i=0;i<n;i++){
         cout << "Author: ";
@@ -95,7 +120,13 @@ int main(){
     cout<<"Choice: ";
     cin>>sortChoice;
 
-    mergeSort(posts,0,n-1);
+    int algoChoice;
+    cout<<"\nChoose sorting algorithm:\n";
+    cout<<"1. Merge Sort\n";
+    cout<<"2. Quick Sort\n";
+    cin>>algoChoice;
+
+    if(algoChoice == 1)mergeSort(posts,0,n-1);else quickSort(posts,0,n-1);
     displayFeed(posts,n);
     return 0;
 }
