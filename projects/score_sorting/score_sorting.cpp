@@ -48,6 +48,28 @@ void insertionSort(vector<Student>& students){
         students[j+1]=key;
     }
 }
+
+int partition(vector<Student>& students ,int low,int high){
+    Student pivot = students[high];
+    int i=low-1;
+
+    for(int j=low;j<high;++j){
+        if(students[j].score < pivot.score){
+            i++;
+            swap(students[i],students[j]);
+        }
+    }
+    swap(students[i+1],students[high]);
+    return i+1;
+}
+
+void quickSort(vector<Student>& students , int low,int high){
+    if(low<high){
+        int pi=partition(students,low,high);
+        quickSort(students,low,pi-1);
+        quickSort(students,pi+1,high);
+    }
+}
 int main(){
     vector<Student> students = {
         {"Alice", 85},
@@ -62,6 +84,7 @@ int main(){
     cout << "1. Bubble Sort\n";
     cout << "2. Selection Sort\n";
     cout << "3. Insertion Sort\n";
+    cout << "4. Quick Sort\n";
     cout << "Enter your choice: ";
     cin >> choice;
 
@@ -82,6 +105,10 @@ int main(){
             insertionSort(students);
             cout << "\nAfter Sorting (Insertion Sort):\n";
             break;
+        case 4:
+               quickSort(students,0,students.size()-1);
+               cout << "\nAfter Sorting (Quick Sort):\n";
+               break;
         default:
             cout << "Invalid choice. Exiting...\n";
             return 0;
