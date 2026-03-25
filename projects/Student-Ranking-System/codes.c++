@@ -6,6 +6,30 @@ struct Student{
     int score;
 };
 
+int partition(Student arr[],int low ,int high){
+    int pivot = arr[high];
+    int i=low-1;
+
+    for(int j=low;j<high;j++){
+        if(arr[j].score>pivot){
+            i++;
+            swap(arr[i],arr[j]);            
+        }
+    }
+    swap(arr[i+1],arr[high]);
+    return i+1;
+}
+
+void quickSort(Student arr[],int low,int high){
+    if(low<high){
+        int pi = partition(arr,low,high);
+
+        quickSort(arr,low,pi-1);
+        quickSort(arr,pi+1,high);
+
+    }
+}
+
 void merge(Student arr[],int left,int mid , int right){
     int n1 = mid - left + 1;
     int n2 =right - mid;
@@ -60,9 +84,14 @@ void display(Student arr[],int n){
 }
 
 int main(){
-    int n;
+    int n,method;
+    cout<<"Enter method number for sorting (1 >> quick sort , 2 >> Merge Sort) :";
+    cin>>method;
+
+cin.ignore();
     cout<<"Enter number of students: ";
     cin>>n;
+    
 
     Student students[n];
 
@@ -73,8 +102,20 @@ int main(){
         cout<<"Enter score: ";
         cin>>students[i].score;
     }
+switch(method){
+    case 1:
+    quickSort(students,0,n-1);
+    display(students,n);
+    break;
+    case 2:
 
     mergeSort(students,0,n-1);
     display(students,n);
-    return 0;
+    break;
+    default:
+         mergeSort(students,0,n-1);
+    display(students,n);
+    break;
+}
+return 0;
 }
