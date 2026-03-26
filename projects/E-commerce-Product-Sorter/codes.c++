@@ -65,7 +65,32 @@ void display(Product arr[],int n){
     }
 }
 
+int partition(Product arr[],int low,int high){
+    Product pivot = arr[high];
+    int i=low-1;
+
+    for(int j=low;j<high;j++){
+        if(compare(arr[j],pivot)){
+            i++;
+            swap(arr[i],arr[j]);
+        }
+    }
+    swap(arr[i+1],arr[high]);
+    return i+1;
+}
+
+void quickSort(Product arr[],int low ,int high){
+    if(low<high){
+        int pi = partition(arr,low,high);
+        quickSort(arr,low,pi-1);
+        quickSort(arr,low+1,high);
+    }
+}
+
 int main(){
+    int method;
+    cout<<"Enter the sorting method number (1 >> quick sort,2 >> merge sort): ";
+    cin >> method;
     int n;
     cout<<"Enter number of products: ";
     cin >>n;
@@ -93,10 +118,22 @@ int main(){
     cout << "3. Rating (High → Low)\n";
     cout << "Enter choice: ";
     cin >> choice;
-
+switch(method){
+    case 1:
+    quickSort(products,0,n-1);
+    display(products,n);
+    break;
+    case 2:
     mergeSort(products, 0, n - 1);
 
     display(products, n);
+break;
+default:
+mergeSort(products, 0, n - 1);
 
+    display(products, n);
+break;
+}
+    
     return 0;
 }
