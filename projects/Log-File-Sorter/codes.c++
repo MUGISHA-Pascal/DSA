@@ -49,6 +49,31 @@ void mergeSort(Log arr[],int left , int right){
     }
 }
 
+int partition(Log arr[],int low,int high){
+
+    int pivot = toMinutes(arr[high].time);
+    int i=low-1;
+
+    for(int j=low;j<high;j++){
+        if(toMinutes(arr[j].time) <= pivot){
+            i++;
+            swap(arr[i],arr[j]);
+        }
+    }
+    swap(arr[i+1],arr[high]);
+    return i+1;
+}
+
+void quickSort(Log arr[],int low,int high){
+    if(low < high){
+        int pi = partition(arr,low,high);
+
+        quickSort(arr,low,pi-1);
+        quickSort(arr,pi+1,high);
+        
+    }
+}
+
 int main(){
     int n;
     cout<<"Enter number of logs: ";
