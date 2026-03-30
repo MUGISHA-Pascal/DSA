@@ -13,11 +13,11 @@ void merge(int arr[],int left, int mid,int right){
          L[i]=arr[left+i];
     }
 
-    for(int j=0;j<n2;i++){
+    for(int j=0;j<n2;j++){
         R[j]=arr[mid+1+j];
     }
 
-    int i=0;j=0,k=left;
+    int i=0,j=0,k=left;
 
     while(i<n1 && j<n2){
         if(L[i]<R[j]){
@@ -41,6 +41,20 @@ void mergeSort(int arr[],int left , int right){
     merge(arr,left,mid,right);
    }
 }
+
+// selection sort
+void selectionSort(int arr[],int n){
+    for(int i=0;i<n-1;i++){
+        int minIndex = i;
+for(int j=i+1;j<n;j++){
+    if(arr[j]<arr[minIndex]){
+        minIndex=j;
+    }
+}
+swap(arr[i],arr[minIndex]);
+    }
+}
+
 
 int main(){
     ifstream infile("input.txt");
