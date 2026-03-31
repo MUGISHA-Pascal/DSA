@@ -4,7 +4,7 @@ using namespace std;
 struct Log{
     string time;
     string message;
-}
+};
 
 int toMinutes(string t){
     int hour = stoi(t.substr(0,2));
@@ -71,6 +71,18 @@ void quickSort(Log arr[],int low,int high){
         quickSort(arr,low,pi-1);
         quickSort(arr,pi+1,high);
         
+    }
+}
+
+void selectionSort(Log arr[],int n){
+    for(int i=0;i<n-1;i++){
+        int minIndex=i;
+        for(int j=i+1;j<n;j++){
+            if(toMinutes(arr[j].time) < toMinutes(arr[minIndex].time)){
+                minIndex = j;
+            }
+        }
+        swap(arr[i],arr[minIndex];)
     }
 }
 
