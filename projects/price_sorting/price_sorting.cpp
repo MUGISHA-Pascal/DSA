@@ -32,6 +32,19 @@ void displayProducts(const vector<Product>& products){
     }
 }
 
+void insertionSort(vector<Product>& products){
+    int n=products.size();
+    for(int i=1;i<n;i++){
+        Product key = products[i];
+        int j=i-1;
+        while(j>=0 && products[j].price>key.price){
+            products[j+1]=products[j];
+            j--;
+        }
+        products[j+1]=key;
+    }
+}
+
 int main(){
 Vector<Product> products={
 Product("Laptop", 1200),
