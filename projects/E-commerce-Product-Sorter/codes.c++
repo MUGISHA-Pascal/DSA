@@ -87,7 +87,7 @@ void quickSort(Product arr[],int low ,int high){
     }
 }
 
-void selectionSort(product arr[],int n){
+void selectionSort(Product arr[],int n){
     for(int i=0;i<n-1;i++){
         int minIndex = i;
         for(int j=i+1;j<n;j++){
@@ -98,6 +98,19 @@ void selectionSort(product arr[],int n){
         if(minIndex != i){
             swap(arr[i],arr[minIndex]);
         }
+    }
+}
+
+// insertion sort
+void insertionSort(Product arr[],int n){
+    for(int i=1;i<n;i++){
+        Product key = arr[i];
+        int j=i-1;
+        while(j>=0 && !compare(arr[j],key)){
+            arr[j+1]=arr[j];
+            j--;
+        }
+        arr[j+1]=key;
     }
 }
 

@@ -85,6 +85,19 @@ void selectionSort(Log arr[],int n){
         swap(arr[i],arr[minIndex];)
     }
 }
+ 
+// insertion sort
+void insertionSort(Log arr[],int n){
+    for(int i=1;i<n;i++){
+        Log key=arr[i];
+        int j=i-1;
+        while(j>=0 && toMinutes(arr[j].time)>toMinutes(key.time)){
+            arr[j+1]=arr[j];
+            j--;
+        }
+        arr[j+1]=key;
+    }
+}
 
 int main(){
     int n;
