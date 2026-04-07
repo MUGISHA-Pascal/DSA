@@ -63,6 +63,62 @@ void display(Movie arr[],int n){
     }
 }
 
+void insertionSort(Movie arr[],int n){
+    for(int i=1;i<n;i++){
+        Movie key = arr[i];
+        int j = i-1;
+        while(j>=0 && compare(key,arr[j])){
+            arr[j+1]=arr[j];
+            j--;
+        }
+        arr[j+1]=key;
+    }
+}
+
+void selectionSort(Movie arr[],int n){
+ for(int i=0;i<n-1;i++){
+    int best=i;
+    for(int j=i+1;j<n;j++){
+        if(compare(arr[j],arr[best])){
+            best=j
+        }
+    }
+    swap(arr[i],arr[best]);
+ }
+}
+
+void bubbleSort(Movie arr[],int n){
+    for(int i=0;i<n-1;i++){
+    for(int j=0;j<n-i-1;j++){
+    if(!compare(arr[j],arr[j+1])){
+    swap(arr[j],arr[j+1]);
+    }
+    }
+    }
+}
+
+int partition(Movie arr[],int low ,int high){
+    Movie pivot = arr[high];
+    int i=low-1;
+
+    for(int j=low;j<high;j++){
+    if(compare(arr[j],pivot)){
+            i++;
+            swap(arr[i],arr[j]);
+        }
+    }
+    swap(arr[i+1],arr[high]);
+    return i+1;
+}
+
+void quickSort(Movie arr[],int low,int high){
+    if(low<high){
+        int pi = partition(arr,low,high):
+        quickSort(arr,low,pi-1);
+        quickSort(arr,pi+1,high);
+    }
+}
+
 int main(){
     int n;
 
