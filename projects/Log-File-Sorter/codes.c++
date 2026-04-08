@@ -99,6 +99,17 @@ void insertionSort(Log arr[],int n){
     }
 }
 
+//bubble sort
+void bubbleSort(Log arr[],int n){
+    for(int i=0;i<n-1;i++){
+        for(int j=0;j<n-i-1;j++){
+            if(toMinutes(arr[j].time)>toMinutes(arr[j+1].time)){
+                swap(arr[j],arr[j+1]);
+            }
+        }
+    }
+}
+
 int main(){
     int n;
     cout<<"Enter number of logs: ";
