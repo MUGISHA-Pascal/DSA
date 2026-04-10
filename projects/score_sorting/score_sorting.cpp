@@ -70,6 +70,49 @@ void quickSort(vector<Student>& students , int low,int high){
         quickSort(students,pi+1,high);
     }
 }
+
+//merge sort helper
+void merge(vector<Student>& students,int left,int mid,int right){
+    int n1=mid-left+1;
+    int n2=right-mid;
+
+    Student L[n1],R[n2];
+
+    for(int i=0;i<n1;i++)L[i]=students[left+i];
+    for(int j=0;j<n2;j++)R[j]=students[mid+j+1];
+
+    int i=0,j=0,k=0;
+
+    while(i<n1 && j<n2){
+        if(L[i].score <= R[j].score){
+            students[k]=students[i++];
+            }else{
+            students[k]=students[j++];
+        }
+        k++;
+    }
+
+    while(i<n1){
+        students[k++]=L[i++];
+    }
+
+    while(j<n2){
+        students[k++]=R[j++];
+    }
+}
+
+//merge sort
+void mergeSort(vector<Student>& students,int left,int right){
+    if(left<right){
+        int mid=left+(right-left)/2;
+
+        mergeSort(students,left,mid);
+        mergeSort(students,mid+1,right);
+
+        merge(students,left,mid,right);
+    }
+}
+
 int main(){
     vector<Student> students = {
         {"Alice", 85},
