@@ -25,6 +25,7 @@ bool compare(Post a,Post b){
     return a.likes > b.likes;
 }
 
+//merge sort helper
 void merge(Post arr[],int left , int mid ,int right){
     int n1 = mid-left+1;
     int n2 = right - mid;
@@ -45,6 +46,7 @@ void merge(Post arr[],int left , int mid ,int right){
     while(j<n2) arr[k++] = R[j++];
 }
 
+//merge sort
 void mergeSort(Post arr[],int left,int right){
 
 
@@ -66,6 +68,7 @@ void displayFeed(Post arr[],int n){
     }
 }
 
+//quick sort helper
 int partition(Post arr[],int low,int high){
     Post pivot = arr[high];
 
@@ -82,12 +85,50 @@ int partition(Post arr[],int low,int high){
     return i+1;
 }
 
+//quick sort
 void quickSort(Post arr[],int low,int high){
     if(low<high){
         int pi = partition(arr,low,high);
 
         quickSort(arr,low,pi-1);
         quickSort(arr,pi+1,high);
+    }
+}
+
+//bubble sort
+void bubbleSort(Post arr[],int n){
+    for(int i=0;i<n-1;i++){
+        for(int j=0;j<n-i-1;j++){
+            if(!compare(arr[j],arr[j+1])){
+             swap(arr[j],arr[j+1]);
+            }
+        }
+    }
+}
+
+//insertion sort
+void insertionSort(Post arr[],int n){
+    for(int i=1;i<n;i++){
+        Post key=arr[i];
+        int j=i-1;
+        while(j>=0 && !compare(arr[j], key)){
+           arr[j+1]=arr[j];
+           j--;
+        }
+        arr[j+1]=key;
+    }
+}
+
+//selection sort
+void selectionSort(Post arr[],int n){
+    for(int i=0;i<n;i++){
+        int minIndex=i;
+        for(int j=i+1;j<n;j++){
+            if(compare(arr[j],arr[minIndex])){
+                minIndex=j;
+            }
+        }
+        swap(arr[i],arr[minIndex]);
     }
 }
 
