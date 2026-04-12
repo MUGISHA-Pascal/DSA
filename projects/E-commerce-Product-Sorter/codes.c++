@@ -16,9 +16,10 @@ bool compare(Product a,Product b){
     if(choice == 1)return a.price < b.price;
     else if(choice == 2)
     return a.price>b.price;
-else return a.rating > b.rating;
+    else return a.rating > b.rating;
 }
 
+//merge sort helper
 void merge(Product arr[],int left,int mid,int right){
     int n1 = mid-left+1;
     int n2 = right-mid;
@@ -47,6 +48,7 @@ void merge(Product arr[],int left,int mid,int right){
     while(j<n2)arr[k++]=R[j++];
 }
 
+//merge sort
 void mergeSort(Product arr[],int left ,int right){
     if(left<right){
         int min = (left + right)/2;
@@ -65,6 +67,7 @@ void display(Product arr[],int n){
     }
 }
 
+//quick sort partitioner
 int partition(Product arr[],int low,int high){
     Product pivot = arr[high];
     int i=low-1;
@@ -79,6 +82,7 @@ int partition(Product arr[],int low,int high){
     return i+1;
 }
 
+//quick sort
 void quickSort(Product arr[],int low ,int high){
     if(low<high){
         int pi = partition(arr,low,high);
@@ -87,6 +91,7 @@ void quickSort(Product arr[],int low ,int high){
     }
 }
 
+//selection sort
 void selectionSort(Product arr[],int n){
     for(int i=0;i<n-1;i++){
         int minIndex = i;
@@ -114,53 +119,64 @@ void insertionSort(Product arr[],int n){
     }
 }
 
+//bubble sort
+void bubbleSort(Product arr[],int n){
+    for(int i=0;i<n-1;i++){
+        for(int j=0;j<n-i-1;j++){
+            if(!compare(arr[j],arr[j+1])){
+                swap(arr[j],arr[j+1]);
+            }
+        }
+    }
+}
+
 int main(){
-    int method;
-    cout<<"Enter the sorting method number (1 >> quick sort,2 >> merge sort): ";
-    cin >> method;
-    int n;
-    cout<<"Enter number of products: ";
-    cin >>n;
-
-    cin.ignore();
-
-    Product products[n];
-
-    for(int i=0;i<n;i++){
-        cout<<"\nEnter product name: ";
-        getline(cin,products[i].name);
-
-        cout<<"Enter price: ";
-        cin>>products[i].price;
-
-        cout<<"Enter rating: ";
-        cin>>products[i].rating;
+        int method;
+        cout<<"Enter the sorting method number (1 >> quick sort,2 >> merge sort): ";
+        cin >> method;
+        int n;
+        cout<<"Enter number of products: ";
+        cin >>n;
 
         cin.ignore();
-    }
 
-       cout << "\nSort Options:\n";
-    cout << "1. Price (Low → High)\n";
-    cout << "2. Price (High → Low)\n";
-    cout << "3. Rating (High → Low)\n";
-    cout << "Enter choice: ";
-    cin >> choice;
-switch(method){
-    case 1:
-    quickSort(products,0,n-1);
-    display(products,n);
+        Product products[n];
+
+        for(int i=0;i<n;i++){
+            cout<<"\nEnter product name: ";
+            getline(cin,products[i].name);
+
+            cout<<"Enter price: ";
+            cin>>products[i].price;
+
+            cout<<"Enter rating: ";
+            cin>>products[i].rating;
+
+            cin.ignore();
+        }
+
+        cout << "\nSort Options:\n";
+        cout << "1. Price (Low → High)\n";
+        cout << "2. Price (High → Low)\n";
+        cout << "3. Rating (High → Low)\n";
+        cout << "Enter choice: ";
+        cin >> choice;
+    switch(method){
+        case 1:
+        quickSort(products,0,n-1);
+        display(products,n);
+        break;
+        case 2:
+        mergeSort(products, 0, n - 1);
+
+        display(products, n);
     break;
-    case 2:
+    default:
     mergeSort(products, 0, n - 1);
 
-    display(products, n);
-break;
-default:
-mergeSort(products, 0, n - 1);
-
-    display(products, n);
-break;
-}
-    
-    return 0;
+        display(products, n);
+    break;
+    }
+        
+        return 0;
 }
