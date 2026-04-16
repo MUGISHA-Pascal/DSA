@@ -2,17 +2,18 @@
 #include <string>
 using namespace std;
 
-struct Applicant{
+struct Applicant {
     string name;
-    int experience;
+    int experience;     // years
     int testScore;
     int interviewScore;
-}
+};
 
-void Swap(Applicant a,Applicant b){
-    Applicant temp=a;
-    a=b;
-    b=temp;
+// ---------- SWAP ----------
+void swap(Applicant &a, Applicant &b){
+    Applicant temp = a;
+    a = b;
+    b = temp;
 }
 
 // ---------- OVERALL SCORE ----------
@@ -29,38 +30,109 @@ bool compare(Applicant a, Applicant b, int choice){
     return false;
 }
 
-void bubbleSort(Applicant arr[],int n,int choice){
+// ---------- BUBBLE SORT ----------
+void bubbleSort(Applicant arr[], int n, int choice){
     for(int i=0;i<n-1;i++){
         for(int j=0;j<n-i-1;j++){
-            if(!compare(arr[j],arr[j+1],choice)){
+            if(!compare(arr[j], arr[j+1], choice)){
                 swap(arr[j],arr[j+1]);
             }
         }
     }
 }
 
-void selectionSort(Applicant arr[],int n,int choice){
+// ---------- SELECTION SORT ----------
+void selectionSort(Applicant arr[], int n, int choice){
     for(int i=0;i<n-1;i++){
-        int minIndex=i;
+        int best = i;
         for(int j=i+1;j<n;j++){
-            if(compare(arr[j],arr[minIndex])){
-                minIndex=j;
+            if(compare(arr[j], arr[best], choice)){
+                best = j;
             }
-        }    
-        swap(arr[i],arr[minIndex]);
+        }
+        swap(arr[i],arr[best]);
     }
 }
 
-void insertionSort(Applicant arr[],int n,int choice){
-    for(int i=0;i<n;i++){
-        Applicant key=arr[i];
-        j=i-1;
+// ---------- INSERTION SORT ----------
+void insertionSort(Applicant arr[], int n, int choice){
+    for(int i=1;i<n;i++){
+        Applicant key = arr[i];
+        int j=i-1;
 
-        while(j>=0 && !compare(arr[j],key,choice)){
-            arr[j+1]=arr[j];
+        while(j>=0 && !compare(arr[j], key, choice)){
+            arr[j+1] = arr[j];
             j--;
         }
-        arr[j+1]=key;
+        arr[j+1] = key;
+    }
+}
+
+// ---------- MERGE SORT ----------
+void merge(Applicant arr[], int l, int m, int r, int choice){
+    int n1 = m-l+1;
+    int n2 = r-m;
+
+    Applicant L[n1], R[n2];
+
+    for(int i=0;i<n1;i++) L[i] = arr[l+i];
+    for(int j=0;j<n2;j++) R[j] = arr[m+1+j];
+
+    int i=0,j=0,k=l;
+
+    while(i<n1 && j<n2){
+        if(compare(L[i], R[j], choice)){
+            arr[k++] = L[i++];
+        } else {
+            arr[k++] = R[j++];
+        }
+    }
+
+    while(i<n1) arr[k++] = L[i++];
+    while(j<n2) arr[k++] = R[j++];
+}
+
+void mergeSort(Applicant arr[], int l, int r, int choice){
+    if(l < r){
+        int m = l + (r-l)/2;
+        mergeSort(arr,l,m,choice);
+        mergeSort(arr,m+1,r,choice);
+        merge(arr,l,m,r,choice);
+    }
+}
+
+// ---------- QUICK SORT ----------
+int partition(Applicant arr[], int low, int high, int choice){
+    Applicant pivot = arr[high];
+    int i = low - 1;
+
+    for(int j=low;j<high;j++){
+        if(compare(arr[j], pivot, choice)){
+            i++;
+            swap(arr[i],arr[j]);
+        }
+    }
+    swap(arr[i+1],arr[high]);
+    return i+1;
+}
+
+void quickSort(Applicant arr[], int low, int high, int choice){
+    if(low < high){
+        int pi = partition(arr,low,high,choice);
+        quickSort(arr,low,pi-1,choice);
+        quickSort(arr,pi+1,high,choice);
+    }
+}
+
+// ---------- DISPLAY ----------
+void display(Applicant arr[], int n){
+    cout << "\n--- APPLICANT RANKING ---\n";
+    for(int i=0;i<n;i++){
+        cout << i+1 << ". " << arr[i].name
+             << " | Exp: " << arr[i].experience
+             << " | Test: " << arr[i].testScore
+             << " | Interview: " << arr[i].interviewScore
+             << " | Overall: " << overallScore(arr[i]) << endl;
     }
 }
 
@@ -115,4 +187,3 @@ int main(){
 
     display(arr,n);
 }
-
